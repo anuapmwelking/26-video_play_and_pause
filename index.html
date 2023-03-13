@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <style>
+    div#icon {
+      position: absolute;
+      content: "";
+      top: 50% !important;
+      left: 50%;
+      background: #fff !important;
+      padding: 20px;
+      cursor: pointer;
+    }
+    video.vid {
+      position: relative;
+    }
+    video#myvid {
+      width: 100%;
+    }
+    button#vidbutton {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: #000;
+      opacity: 0.5;
+      color: #fff;
+      font-size: 40px;
+      visibility: hidden;
+    }
+  </style>
+  <body>
+    <div style="text-align: center">
+      <button id="vidbutton"></button>
+      <video autoplay muted loop id="myvid">
+        <source src="video.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <script>
+      var ppbutton = document.getElementById("vidbutton");
+      var myVideo = document.querySelector("video");
+      myVideo.addEventListener("click", playPause);
+
+      function playPause() {
+        if (myVideo.paused) {
+          myVideo.play();
+          ppbutton.innerHTML =
+            "<i class='fa fa-pause' aria-hidden='true' id='pause'></i>";
+          setTimeout(() => {
+            ppbutton.style.visibility = "hidden";
+          }, 100);
+        } else {
+          ppbutton.style.visibility = "visible";
+          myVideo.pause();
+          ppbutton.innerHTML =
+            "<i class='fa fa-play' aria-hidden='true' id='play'></i>";
+        }
+      }
+    </script>
+  </body>
+</html>
